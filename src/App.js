@@ -62,13 +62,14 @@ function FilterList({seriesInfo, eraInfo, onFilterChange}) {
   )
 }
 
-function ReadList({handler}) {
+function ReadList({handler, checked}) {
   return (
   <div>
     <h3>View Completed Reads</h3>
     <input 
     onChange={handler}
-    type="checkbox"/>
+    type="checkbox"
+    checked={checked}/>
   </div>
   )
 }
@@ -133,7 +134,6 @@ function App() {
   const [checked, setChecked] = useState(false);
   const [nameSorted, setNameSorted] = useState(false);
   const [authorSorted, setAuthorSorted] = useState(false);
-
 
   const handleNameSort = (event) => {
     let newSort = !nameSorted
@@ -232,7 +232,8 @@ function App() {
             eraInfo={eraInfo}
             onFilterChange={handleFilterChange}/>
           <ReadList
-            handler={handleReadList}/>
+            handler={handleReadList}
+            checked={checked}/>
           Total pages read: {count}
         </div>
         <div className="item-grid">
